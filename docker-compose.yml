@@ -1,5 +1,17 @@
 services:
 
+  mysql_engine:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - "3307:3306"
+    restart: always
+    volumes:
+      - ./data:/var/lib/mysql
+    networks:
+      - app_network
+      
   express_app:
     build:
       context: https://github.com/etec-integration-project/2025-backend-Inaki-Gongora.git
