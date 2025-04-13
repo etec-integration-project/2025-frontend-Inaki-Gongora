@@ -19,6 +19,7 @@ services:
     restart: always
     networks:
       - app_network
+    command: ["node", "app.js"]
 
   frontend:
     build:
