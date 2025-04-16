@@ -2,8 +2,9 @@ services:
 
   mysql_engine:
     image: mysql
-    env_file:
-      - .env
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=zephyr
     ports:
       - "3307:3306"
     restart: always
