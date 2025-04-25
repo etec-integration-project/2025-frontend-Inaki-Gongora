@@ -3,7 +3,7 @@ services:
   mysql_engine:
     image: mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=1234
       - MYSQL_DATABASE=zephyr
     ports:
       - "3307:3306"
@@ -18,7 +18,15 @@ services:
     build:
       context: https://github.com/etec-integration-project/2025-backend-Inaki-Gongora.git
       dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
     restart: always
+    environment:
+      - DB_HOST=mysql_engine
+      - DB_USER=root
+      - DB_PASSWORD=1234
+      - DB_NAME=zephyr
+      - DB_PORT=3306
     networks:
       - app_network
     command: ["node", "app.js"]
@@ -33,6 +41,8 @@ services:
       - /app/node_modules
     networks:
       - app_network
+    environment:
+      - REACT_APP_API_URL=http://express_app:3000/api
 
 networks:
   app_network:

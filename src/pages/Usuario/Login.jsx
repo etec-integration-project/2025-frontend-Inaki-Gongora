@@ -5,7 +5,8 @@ import axios from 'axios'; // Asegúrate de tener axios instalado
 import { useAuth } from '../../context/AuthContext';
 import './Login.css';
 
-const API_URL = 'http://localhost:3000/api/usuarios/'; // Cambia esto según la URL de tu backend
+
+const API_URL = 'http://localhost/api/usuarios/'; // Cambia esto según la URL de tu backend
 
 const Login = () => {
   const [email, setEmail] = useState('');
